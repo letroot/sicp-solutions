@@ -1,3 +1,8 @@
+;;Exercise 1.1
+;;Below is a sequence of expressions.  What is the result printed by the
+;;interpreter in response to each expression?  Assume that the sequence
+;;is to be evaluated in the order in which it is presented.
+
 10
 (+ 5 3 4)
 (- 9 1)
@@ -18,3 +23,18 @@
 	 ((< a b) b)
 	 (else -1))
    (+ a 1))
+
+;;Output
+;;10
+;;12
+;;8
+;;3
+;;6
+;;a
+;;b
+;;19
+;;#f
+;;4
+;;16
+;;6
+;;16
