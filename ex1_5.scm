@@ -26,6 +26,6 @@
 
 ;;Solution
 ;;the evaluation of (test 0 (p)) causes a "maximum recursion depth exceeded" error
-;;because using applicative-order evaluation, function parameters are first resolved
-;;(into a primitive) before the function body is executed. The (p) argument keeps
+;;because using applicative-order evaluation, procedure arguments are first resolved
+;;(into a primitive) before the procedure body is applied to the arguments. The (p) argument keeps
 ;;calling itself (infinitely) so the evaluation of (test 0 (p)) never terminates.
