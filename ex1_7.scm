@@ -16,8 +16,10 @@
       guess
       (sqrt-iter (improve guess x) x)))
 
+;;old definition for good-enough?
 (define (good-enough? guess x)
   (< (abs (- (square guess) x)) 0.001))
+
 
 (define (improve guess x)
   (average guess (/ x guess)))
@@ -29,8 +31,27 @@
   (sqrt-iter 1.0 x))
 
 
-;;Solution
 ;;the procedure fails for very small numbers
+;;when using the old definition of good-enough?
 (square (sqrt .0004))
-;; 1.2532224857331766e-3 (not equal to .0004)
-;;Explanation: 
+;; 1.2532224857331766e-3
+
+;;Solution
+;;new definition for good-enough?
+(define (good-enough? guess x)
+  (< (/ (abs (- (improve guess x) guess)) guess) 0.00001))
+
+;;with new definition for good-enough?
+(square (sqrt .0004))
+;;4.0000000203508615e-4
+;;we got a better result for small numbers
+
+(square (sqrt 25))
+;;the procedure still works pretty fine for larger numbers
+;;25.00023178307672
+
+;;Explanation (adapted from sicp wiki):
+;;For computing the square root of small values, the absolute
+;;tolerable accuracy of 0.001 is too large. For very large
+;;values, "The machine precision is unable to represent small
+;;differences between large numbers"
